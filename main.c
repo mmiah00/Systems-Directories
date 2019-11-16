@@ -18,14 +18,18 @@ possible enhancements:
 #include <sys/types.h>
 
 void gothroughfiles (DIR * d) {
-  DIR * now = opendir (d);
-  while (now != NULL) {
-    printf (now.d_name); printf ("\n");
-    now = readdir (now);
-  }
+	printf ("Directories: \n"); 
+  	DIR * now = opendir (d);
+ 	while (now != NULL) {
+		printf ("\t");
+    		printf (now.d_name); 
+		printf ("\n");
+    		now = readdir (now);
+  	}
 }
 
 int main () {
+
   return 0;
 }
 
