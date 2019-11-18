@@ -17,19 +17,20 @@ possible enhancements:
 #include <sys/stat.h>
 #include <sys/types.h>
 
-void gothroughfiles (DIR * d) {
+void gothroughfiles (char * dir_name) {
 	printf ("Directories: \n");
-  	DIR * now = opendir (d);
- 	while (now != NULL) {
-		printf ("\t");
-    		printf (now.d_name);
-		printf ("\n");
-    		now = readdir (now);
+	DIR * stream = opendir (d);
+	struct dirent * f = readdir (stream);
+ 	while (f != NULL) {
+		printf ("\t%s \n", now -> d_name);
   }
 	closedir (d);
 }
 
 int main () {
-	gothroughfiles ('.');
+	DIR * test;
+	test -> d_name = ".";
+	test -> d_type = DT_REG;
+	gothroughfiles (test);
   return 0;
 }
