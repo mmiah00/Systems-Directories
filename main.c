@@ -23,7 +23,9 @@ void gothroughfiles (char * dir_name) {
 	struct dirent * f = readdir (stream);
  	while (f != NULL) {
 		printf ("\t%s \n", f -> d_name);
+		f = readdir (stream);
   }
+	printf ("\n");
 	closedir (stream);
 }
 
