@@ -43,7 +43,7 @@ int findsize (char * dir_name) {
 }
 
 int main () {
-	printf ("Total Size: %d\n", findsize ("."));
+	printf ("Total Size: %d Bytes\n", findsize ("."));
 	gothroughfiles (".");
   return 0;
 }
