@@ -22,7 +22,13 @@ void gothroughfiles (char * dir_name) {
 	DIR * stream = opendir (dir_name);
 	struct dirent * f = readdir (stream);
  	while (f != NULL) {
-		printf ("\t%s \n", f -> d_name);
+		printf ("\t%s", f -> d_name);
+		if (f -> d_type == DT_DIR) {
+			printf ("[DIRECTORY]\n");
+		}
+		else {
+			printf ("[REG FILE]\n"); 
+		}
 		f = readdir (stream);
   }
 	printf ("\n");
