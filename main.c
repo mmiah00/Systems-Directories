@@ -29,7 +29,21 @@ void gothroughfiles (char * dir_name) {
 	closedir (stream);
 }
 
+int findsize (char * dir_name) {
+	int ans = 0;
+	DIR * stream = opendir (dir_name);
+	struct dirent * f = readdir (stream);
+	while (f != NULL){
+		struct stat * f_stats;
+		stat (f-> d_name, f_stats);
+		ans += f_stats -> st_size;
+		f = readdir (stream);
+	}
+	return ans;
+}
+
 int main () {
+	printf ("Total Size: %d\n", findsize ("."));
 	gothroughfiles (".");
   return 0;
 }
