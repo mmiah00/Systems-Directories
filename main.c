@@ -22,7 +22,7 @@ void gothroughfiles (char * dir_name) {
 	printf ("Directories: \n");
 	DIR * stream = opendir (dir_name);
 	if (!stream || stream == NULL) {
-		printf ("Directory %s not found. Error: ", dir_name, strerror (errno));
+		printf ("Directory %s not found. Error: %s", dir_name, strerror (errno));
 	}
 	struct dirent * f = readdir (stream);
  	while (f != NULL) {
@@ -58,7 +58,7 @@ int main (int argc, char *argv []) {
 		fgets (name, 100, stdin);
 	}
 	else {
-		path = argv[1];
+		name = argv[1];
 	}
 	printf ("Total Size: %d Bytes\n", findsize (name));
 	gothroughfiles (name);
