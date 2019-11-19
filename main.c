@@ -56,6 +56,7 @@ int findsize (char * dir_name) {
 	return ans;
 }
 
+/*
 void printsize (char * dir_name) {
 	printf ("Total size: ");
 	int size = findsize (dir_name);
@@ -63,15 +64,16 @@ void printsize (char * dir_name) {
 		printf ("%d Bytes", size);
 	}
 	if (size > 1000) {
-		printf ("%d.%f KB\n", size/1000, size % 1000);
+		printf ("%d.%d KB\n", size/1000, size % 1000);
 	}
 	if (size > 1000000) {
-		printf ("%d.%f MB\n", size/1000000, size % 1000000);
+		printf ("%d.%d MB\n", size/1000000, size % 1000000);
 	}
 	if (size > 1000000000) {
-		printf ("%d.%f GB\n", size/1000000000, size % 1000000000);
+		printf ("%d.%d GB\n", size/1000000000, size % 1000000000);
 	}
 }
+*/
 
 int main (int argc, char *argv []) {
 	char * name = malloc (100);
@@ -90,6 +92,7 @@ int main (int argc, char *argv []) {
  	 else {
    		 name = argv[1];
  	 }
+	//printsize (name); 
 	printf ("Total Size: %d Bytes\n", findsize (name));
 	gothroughfiles (name);
 	return 0;
