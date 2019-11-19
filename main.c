@@ -50,11 +50,14 @@ int findsize (char * dir_name) {
 		ans += f_stats -> st_size;
 		f = readdir (stream);
 	}
-	return ans;
+	if (ans < 0) {
+		return ans * -1;
+	}
+	return ans; 
 }
 
 int main (int argc, char *argv []) {
-	//char * name;// = malloc (100);
+	char * name = malloc (100);
 	/*
 	if (argc <= 1) {
 		fgets (name, 100, stdin);
@@ -62,30 +65,15 @@ int main (int argc, char *argv []) {
 	else {
 		name = argv[1];
 	}*/
-	char * path = malloc(100);
-	printf ("worked");
  	 if (argc <= 1){
    		printf("Directory: ");
-			printf ("worked");
-
-    	fgets(path, 100, stdin);
-			printf ("worked");
-
-    	path[strlen(path)-1] = 0;
-			printf ("worked");
-
+    	fgets(name, 100, stdin);
+    	name[strlen(name)-1] = 0;
  	 }
  	 else {
-   		 path = argv[1];
-			 printf ("worked");
-
+   		 name = argv[1];
  	 }
-	printf ("Total Size: %d Bytes\n", findsize (path));
-	printf ("worked");
-
-	gothroughfiles (path);
-	printf ("worked");
-
-	//free (name);
+	printf ("Total Size: %d Bytes\n", findsize (name));
+	gothroughfiles (name);
 	return 0;
 }
