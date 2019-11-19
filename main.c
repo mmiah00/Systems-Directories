@@ -53,7 +53,7 @@ int findsize (char * dir_name) {
 }
 
 int main (int argc, char *argv []) {
-	char * name = malloc (100);
+	char * name;// = malloc (100);
 	if (argc <= 1) {
 		fgets (name, 100, stdin);
 	}
@@ -62,6 +62,6 @@ int main (int argc, char *argv []) {
 	}
 	printf ("Total Size: %d Bytes\n", findsize (name));
 	gothroughfiles (name);
-	free (name); 
+	//free (name); 
 	return 0;
 }
