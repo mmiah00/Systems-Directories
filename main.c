@@ -14,12 +14,16 @@ possible enhancements:
 #include <stdlib.h>
 #include <unistd.h>
 #include <dirent.h>
+#include <errno.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 
 void gothroughfiles (char * dir_name) {
 	printf ("Directories: \n");
 	DIR * stream = opendir (dir_name);
+	if (!stream || stream == NULL) {
+		printf ("Directory %s not found. Error: ", dir_name, strerror (errno));
+	}
 	struct dirent * f = readdir (stream);
  	while (f != NULL) {
 		printf ("\t%s", f -> d_name);
@@ -27,7 +31,7 @@ void gothroughfiles (char * dir_name) {
 			printf ("[DIRECTORY]\n");
 		}
 		else {
-			printf ("[REG FILE]\n"); 
+			printf ("[REG FILE]\n");
 		}
 		f = readdir (stream);
   }
@@ -48,8 +52,15 @@ int findsize (char * dir_name) {
 	return ans;
 }
 
-int main () {
-	printf ("Total Size: %d Bytes\n", findsize ("."));
-	gothroughfiles (".");
-  return 0;
+int main (int argc, char *argv []) {
+	char * name;
+	if (argc <= 1) {
+		fgets (name, 100, stdin);
+	}
+	else {
+		path = argv[1];
+	}
+	printf ("Total Size: %d Bytes\n", findsize (name));
+	gothroughfiles (name);
+	return 0;
 }
