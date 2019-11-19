@@ -17,6 +17,7 @@ possible enhancements:
 #include <errno.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <string.h> 
 
 void gothroughfiles (char * dir_name) {
 	printf ("Directories: \n");
@@ -53,15 +54,25 @@ int findsize (char * dir_name) {
 }
 
 int main (int argc, char *argv []) {
-	char * name;// = malloc (100);
+	//char * name;// = malloc (100);
+	/*
 	if (argc <= 1) {
 		fgets (name, 100, stdin);
 	}
 	else {
 		name = argv[1];
-	}
-	printf ("Total Size: %d Bytes\n", findsize (name));
-	gothroughfiles (name);
+	}*/
+	char * path = malloc(100);
+ 	 if (argc <= 1){
+   		printf("Directory: ");
+    		fgets(path, 100, stdin);
+    		path[strlen(path)-1] = 0;
+ 	 }
+ 	 else {
+   		 path = argv[1];
+ 	 }
+	printf ("Total Size: %d Bytes\n", findsize (path));
+	gothroughfiles (path);
 	//free (name); 
 	return 0;
 }
